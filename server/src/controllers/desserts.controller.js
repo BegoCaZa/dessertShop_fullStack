@@ -59,17 +59,17 @@ dessertsController.updateStock = async (req, res) => {
   }
 };
 
-// usersController.deleteUserById = async (req, res) => {
-//   const { id } = req.params;
+dessertsController.deleteDessert = async (req, res) => {
+  const { id } = req.params;
 
-//   try {
-//     await UserModel.deleteOne({ _id: id });
-//     //importante que reciba objetos
-//     const allUsers = await UserModel.find();
-//     res.status(200).send(allUsers);
-//   } catch (error) {
-//     res.status(500).send({ message: 'Error deleting users' + error });
-//   }
-// };
+  try {
+    await DessertModel.deleteOne({ _id: id });
+    //importante que reciba objetos
+    const allDesserts = await DessertModel.find();
+    res.status(200).send(allDesserts);
+  } catch (error) {
+    res.status(500).send({ message: 'Error deleting desserts' + error });
+  }
+};
 
 module.exports = dessertsController;
