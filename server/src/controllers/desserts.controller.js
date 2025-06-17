@@ -7,23 +7,25 @@ dessertsController.getAllDesserts = async (req, res) => {
     const allDesserts = await DessertModel.find();
     res.status(200).send(allDesserts);
   } catch (error) {
-    res.status(500).send('Error getting desserts', error);
+    res
+      .status(500)
+      .json({ message: 'Error getting desserts', error: error.message });
   }
 };
 
-// usersController.getUserById = async (req, res) => {
-//   const { id } = req.params;
-//   try {
-//     const userFound = await UserModel.findById(id);
+dessertsController.getDessertById = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const dessertFound = await DessertModel.findById(id);
 
-//     if (!userFound) {
-//       return res.status(404).send({ message: 'User not found' });
-//     }
-//     return res.status(200).send(userFound);
-//   } catch (error) {
-//     res.status(500).send({ message: 'Error getting user' + error });
-//   }
-// };
+    if (!dessertFound) {
+      return res.status(404).send({ message: 'Dessert not found' });
+    }
+    return res.status(200).send(dessertFound);
+  } catch (error) {
+    res.status(500).send({ message: 'Error getting dessert' + error });
+  }
+};
 
 // usersController.createUser = async (req, res) => {
 //   const newUser = new UserModel({ ...req.body });
@@ -36,17 +38,20 @@ dessertsController.getAllDesserts = async (req, res) => {
 //   }
 // };
 
-// usersController.updateUser = async (req, res) => {
-//   const { id } = req.params;
-//   try {
-//     await UserModel.updateOne({ _id: id }, { $set: { ...req.body } });
-//     //importante que reciba objetos
-//     const allUsers = await UserModel.find();
-//     res.status(200).send(allUsers);
-//   } catch (error) {
-//     res.status(500).send({ message: 'Error updating users' + error });
-//   }
-// };
+dessertsController.updateStock = async (req, res) => {
+  const { id } = req.params;
+  const quantity = req.body.stock;
+
+  
+  try {
+    await DessertModel.updateOne({ _id: id }, { $set: { stock:  } });
+    //importante que reciba objetos
+    const allDesserts = await DessertModel.find();
+    res.status(200).send(allDesserts);
+  } catch (error) {
+    res.status(500).send({ message: 'Error updating users' + error });
+  }
+};
 
 // usersController.deleteUserById = async (req, res) => {
 //   const { id } = req.params;
