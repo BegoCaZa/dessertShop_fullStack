@@ -40,11 +40,17 @@ dessertsController.getDessertById = async (req, res) => {
 
 dessertsController.updateStock = async (req, res) => {
   const { id } = req.params;
-  const quantity = req.body.stock;
-
-  
+  const { quantity } = req.body; // el monto a restar stock
   try {
-    await DessertModel.updateOne({ _id: id }, { $set: { stock:  } });
+    dessertFound = await DessertModel.findById(id);
+    if (!dessertFound) {
+      return res.status(404).send({ message: 'Dessert not found' });
+    }
+    if (dessertFound.stock < quantity) {
+      return res.status(400).send({ message: 'Not enough stock' });
+    }
+    dessertFound.stock -= quantity; // resta el stock
+    await dessertFound.save(); // guarda los cambios
     //importante que reciba objetos
     const allDesserts = await DessertModel.find();
     res.status(200).send(allDesserts);
