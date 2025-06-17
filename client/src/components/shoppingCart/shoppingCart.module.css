@@ -1,0 +1,121 @@
+.shoppingCart {
+  background-color: white;
+  border-radius: 1.5rem;
+  padding: 22px;
+  max-width: 88%;
+  margin: 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+}
+@media (min-width: 760px) {
+  .shoppingCart {
+    margin-inline: auto;
+  }
+}
+@media (min-width: 1440px) {
+  .shoppingCart {
+    width: 380px;
+    margin: 0;
+    height: auto;
+  }
+}
+.emptyCart {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-items: center;
+}
+.emptyCartImage {
+  width: 120px;
+}
+.cartTitle {
+  font-size: var(--cart-title-size);
+  font-weight: bold;
+  color: var(--color-primary);
+}
+
+.cartItems {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  /* margin-inline: auto; */
+}
+
+.productSummary {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  border-bottom: solid 1px var(--color-outline);
+  padding: 14px 0;
+}
+.productSummaryTextContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 4px;
+  font-size: var(--card-subtitle-size);
+}
+
+.productSummaryTitle {
+  font-weight: var(--card-title-style);
+}
+
+.productSummaryPrices {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  gap: 15px;
+}
+
+.productSummaryQuantity {
+  color: var(--color-primary);
+  font-weight: var(--card-title-style);
+}
+
+.productSummaryPrice {
+  color: var(--color-subtitle);
+}
+
+.productSummaryFinalPrice {
+  color: var(--color-subtitle);
+  font-weight: var(--card-title-style);
+}
+
+.removeItem {
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+  border: solid 2px var(--color-delete);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 3px;
+}
+
+.orderTotalContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.orderTotalText {
+  font-weight: var(--card-subtitle-style);
+}
+
+.orderTotalPrice {
+  font-weight: var(--card-title-style);
+  font-size: 20px;
+}
+
+.hide {
+  display: none;
+}

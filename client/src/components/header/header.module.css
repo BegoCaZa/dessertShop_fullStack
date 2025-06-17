@@ -1,0 +1,44 @@
+.header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  /* padding-top: 50px;
+    padding-left: 20px; */
+  width: 90%;
+  margin: 50px 20px 20px 20px;
+}
+@media (min-width: 760px) {
+  .header {
+    width: 86%;
+    margin-inline: auto;
+  }
+}
+
+.headerTitle {
+  font-size: var(--title-size);
+  font-weight: var(--title-style);
+  text-align: flex-start;
+  padding-bottom: 20px;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+}
+
+.button {
+  border: 1.5px solid var(--color-outline);
+  border-radius: var(--borderRadius-button);
+  background: none;
+  padding: 8px 20px;
+  font-weight: var(--button-subtitle-style);
+  cursor: pointer;
+  color: var(--color-text);
+}
+
+.buttonActive {
+  background-color: var(--color-primary);
+  color: white;
+}

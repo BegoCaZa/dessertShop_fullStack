@@ -1,0 +1,97 @@
+:root {
+  --color-primary: #c73b0f;
+  --color-outline: #ad8a85;
+  --color-accent: #ffeadb;
+  --color-text: #260f08;
+  --color-subtitle: #8c6e5a;
+  --color-bg: rgb(252, 248, 246);
+  --color-delete: #b19995;
+
+  --borderRadius-button: 20px;
+  --borderRadius-card: 10px;
+
+  /* TYPOGRAPHY */
+  --title-size: 40px;
+  --title-style: 700;
+  --cart-title-size: 24px;
+  --button-subtitle-size: 14px;
+  --button-subtitle-style: 500;
+  --card-title-size: 18px;
+  --card-title-style: 600;
+  --card-subtitle-size: 16px;
+  --card-subtitle-style: 300;
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+nav ul {
+  list-style: none;
+  padding-left: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+body {
+  margin: 0;
+  font-family: 'Red Hat Text';
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  /* display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-height: 100dvh; */
+}
+
+.mainContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding-bottom: 50px;
+}
+
+@media (min-width: 1440px) {
+  .mainContainer {
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+  }
+}
+/* @media (min-width: 1440px) {
+  body {
+    justify-items: center;
+    align-content: center;
+  }
+} */
+
+/* Cards */
+
+@media (min-width: 1440px) {
+  .main {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    margin-inline: auto;
+    width: 92%;
+    gap: 15px;
+  }
+}
