@@ -74,9 +74,23 @@ const ShoppingCart = ({ cart, setCart, removeFromCart, handleStockUpdate }) => {
                 ${totalPrice.toFixed(2)}
               </span>
             </div>
+            <button
+              onClick={async () => {
+                try {
+                  for (const product of cart) {
+                    await handleStockUpdate(product.id, product.quantity);
+                  }
+                  alert('Stock updated successfully!');
+                  setCart([]); // vacía el carrito si quieres
+                } catch (error) {
+                  alert('Error updating stock');
+                }
+              }}
+            >
+              CHECKOUT
+            </button>
           </div>
         )}
-        <button onClick={handleStockUpdate}>CHECKOUT</button>
       </div>
     </>
   );

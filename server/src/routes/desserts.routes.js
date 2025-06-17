@@ -3,9 +3,9 @@ const dessertsController = require('../controllers/desserts.controller');
 const dessertsRoutes = express.Router();
 
 dessertsRoutes.get('/', dessertsController.getAllDesserts);
-dessertsRoutes.get('/', dessertsController.getDessertById);
+// dessertsRoutes.get('/:id', dessertsController.getDessertById);
 // usersRoutes.post('/', usersController.createUser);
-dessertsRoutes.patch('/', dessertsController.updateStock);
+dessertsRoutes.patch('/:id', dessertsController.updateStock);
 dessertsRoutes.delete('/', dessertsController.deleteDessert);
 
 module.exports = dessertsRoutes;
