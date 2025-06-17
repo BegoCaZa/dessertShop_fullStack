@@ -1,44 +1,70 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import Header from './components/header/Header';
 import ProductsContainer from './components/productsContainer/ProductsContainer';
 import ShoppingCart from './components/shoppingCart/ShoppingCart';
-import { PRODUCTS_INFO } from './constants/products-info';
+import { getAllDesserts } from './lib/utils/api';
 
 const App = () => {
   const [cart, setCart] = useState([]);
   const [filter, setFilter] = useState('DEFAULT');
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   console.log(cart);
 
-  const filteredProducts = filterProducts(filter);
+  useEffect(() => {
+    fetchDesserts(setProducts);
+    setLoading(false);
+  }, []);
+
+  const filteredProducts = filterProducts(filter, products);
 
   return (
     <div className='mainContainer'>
-      <Header
-        filter={filter}
-        setFilter={setFilter}
-        filteredProducts={filteredProducts}
-      />
-      <div className='main'>
-        <ProductsContainer
-          filteredProducts={filteredProducts}
-          cart={cart}
-          setCart={setCart}
-          removeFromCart={removeFromCart}
-        />
-        <ShoppingCart
-          cart={cart}
-          setCart={setCart}
-          removeFromCart={removeFromCart}
-        />
-      </div>
+      {loading ? (
+        <div>
+          <p>Loading...</p>
+        </div>
+      ) : (
+        <>
+          <Header
+            filter={filter}
+            setFilter={setFilter}
+            filteredProducts={filteredProducts}
+          />
+          <div className='main'>
+            <ProductsContainer
+              filteredProducts={filteredProducts}
+              cart={cart}
+              setCart={setCart}
+              removeFromCart={removeFromCart}
+            />
+            <ShoppingCart
+              cart={cart}
+              setCart={setCart}
+              removeFromCart={removeFromCart}
+            />
+          </div>
+        </>
+      )}
     </div>
   );
 };
 
-const filterProducts = filter => {
-  const productsCopy = [...PRODUCTS_INFO];
+const fetchDesserts = async setProducts => {
+  try {
+    const allDesserts = await getAllDesserts();
+    setProducts(allDesserts);
+  } catch (error) {
+    console.error('Error fetching desserts:', error);
+    <h3>Error fetching desserts</h3>;
+    setProducts([]); //array vacio si hay error
+  }
+};
+
+const filterProducts = (filter, products) => {
+  const productsCopy = [...products];
   if (filter === 'DEFAULT') {
     return productsCopy;
   }
