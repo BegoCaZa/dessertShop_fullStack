@@ -16,6 +16,7 @@ const ProductsContainer = ({
           const productExists = cart.find(item => item.id === product.id);
           return (
             <div key={product.id} className={styles.card}>
+              <div className={styles.stockTag}>{product.stock}</div>
               <picture>
                 <source
                   media='(min-width:1440px)'
@@ -31,7 +32,7 @@ const ProductsContainer = ({
                 />
               </picture>
               {/* //boton */}
-              {/* condicional del if que NO ENTIENDO */}
+
               {productExists ? (
                 <div className={styles.buttonAddToCartActive}>
                   <button

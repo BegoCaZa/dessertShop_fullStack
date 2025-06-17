@@ -144,3 +144,19 @@
   font-weight: var(--card-subtitle-style);
   color: var(--color-primary);
 }
+
+.stockTag {
+  position: absolute;
+  top: -15px;
+  right: -15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 35px;
+  height: 35px;
+  background-color: var(--color-primary);
+  color: white;
+  padding: 8px 8px;
+  border-radius: 50%;
+  font-size: var(--tag-font-size);
+}

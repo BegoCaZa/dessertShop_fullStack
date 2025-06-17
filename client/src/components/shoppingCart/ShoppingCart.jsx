@@ -1,6 +1,8 @@
+import { use } from 'react';
+import { updateStock } from '../../lib/utils/api';
 import styles from './ShoppingCart.module.css';
 
-const ShoppingCart = ({ cart, setCart, removeFromCart }) => {
+const ShoppingCart = ({ cart, setCart, removeFromCart, handleStockUpdate }) => {
   //totales para el carrito
   //   let totalProducts = 0;
   //usando reeduce
@@ -74,8 +76,21 @@ const ShoppingCart = ({ cart, setCart, removeFromCart }) => {
             </div>
           </div>
         )}
+        <button onClick={handleStockUpdate}>CHECKOUT</button>
       </div>
     </>
   );
 };
+
+// const handleStockUpdate = async (id, quantity) => {
+// try {
+//     const updatedStock = await updateStock(id, quantity);
+//     return updatedStock; //retorna el nuevo stock actualizado
+//     //va a regresar el stock actualizado de todos los postres
+//   } catch (error) {
+//     console.error('Error updating stock:', error);
+//     throw error;
+//   }
+// };
+
 export default ShoppingCart;

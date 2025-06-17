@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import Header from './components/header/Header';
 import ProductsContainer from './components/productsContainer/ProductsContainer';
 import ShoppingCart from './components/shoppingCart/ShoppingCart';
-import { getAllDesserts } from './lib/utils/api';
+import { getAllDesserts, updateStock } from './lib/utils/api';
 
 const App = () => {
   const [cart, setCart] = useState([]);
@@ -44,6 +44,7 @@ const App = () => {
               cart={cart}
               setCart={setCart}
               removeFromCart={removeFromCart}
+              handleStockUpdate={handleStockUpdate}
             />
           </div>
         </>
@@ -80,6 +81,18 @@ const filterProducts = (filter, products) => {
 const removeFromCart = (setCart, product, cart) => {
   const updatedCart = cart.filter(item => item.id !== product.id);
   setCart(updatedCart);
+};
+
+const handleStockUpdate = async (id, quantity) => {
+  try {
+    const updatedStock = await updateStock(id, quantity);
+    console.log('Stock updated successfully:', updatedStock);
+    return updatedStock; //retorna el nuevo stock actualizado
+    //va a regresar el stock actualizado de todos los postres
+  } catch (error) {
+    console.error('Error updating stock:', error);
+    throw error;
+  }
 };
 
 export default App;
