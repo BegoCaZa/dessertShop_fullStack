@@ -24,6 +24,7 @@ const App = () => {
 
   return (
     <div className='mainContainer'>
+      <Modal>{modalContent}</Modal>
       {loading ? (
         <div>
           <p>Loading...</p>
@@ -53,7 +54,6 @@ const App = () => {
           </div>
         </>
       )}
-      <Modal>{modalContent}</Modal>
     </div>
   );
 };
