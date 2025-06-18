@@ -42,7 +42,7 @@ dessertsController.updateStock = async (req, res) => {
   const { id } = req.params;
   const { quantity } = req.body; // el monto a restar stock
   try {
-    dessertFound = await DessertModel.findById({ id: id });
+    dessertFound = await DessertModel.findById(id);
     if (!dessertFound) {
       return res.status(404).send({ message: 'Dessert not found' });
     }

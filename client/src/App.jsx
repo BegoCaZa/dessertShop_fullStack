@@ -83,11 +83,11 @@ const removeFromCart = (setCart, product, cart) => {
   setCart(updatedCart);
 };
 
-const handleStockUpdate = async (id, quantity) => {
+const handleStockUpdate = async (id, quantity, setProducts) => {
   try {
     const updatedStock = await updateStock(id, quantity);
     console.log('Stock updated successfully:', updatedStock);
-    return updatedStock; //retorna el nuevo stock actualizado
+    setProducts(updatedStock); //retorna el nuevo stock actualizado
     //va a regresar el stock actualizado de todos los postres
   } catch (error) {
     console.error('Error updating stock:', error);

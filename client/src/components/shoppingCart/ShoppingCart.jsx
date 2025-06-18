@@ -43,30 +43,39 @@ const ShoppingCart = ({ cart, setCart, removeFromCart, handleStockUpdate }) => {
         ) : (
           <div className={styles.cartItems}>
             {cart.map(product => (
-              <div key={product.id} className={styles.productSummary}>
-                <div className={styles.cartSummaryTextContainer}>
-                  <span className={styles.productSummaryTitle}>
-                    {product.title}
-                  </span>
-                  <div className={styles.productSummaryPrices}>
-                    <span className={styles.productSummaryQuantity}>
-                      {product.quantity}x
+              <>
+                <div key={product._id} className={styles.productSummary}>
+                  <div className={styles.cartSummaryTextContainer}>
+                    <span className={styles.productSummaryTitle}>
+                      {product.title}
                     </span>
-                    <span className={styles.productSummaryPrice}>
-                      ${product.price.toFixed(2)}
-                    </span>
-                    <span className={styles.productSummaryFinalPrice}>
-                      ${(product.quantity * product.price).toFixed(2)}
-                    </span>
+                    <div className={styles.productSummaryPrices}>
+                      <span className={styles.productSummaryQuantity}>
+                        {product.quantity}x
+                      </span>
+                      <span className={styles.productSummaryPrice}>
+                        ${product.price.toFixed(2)}
+                      </span>
+                      <span className={styles.productSummaryFinalPrice}>
+                        ${(product.quantity * product.price).toFixed(2)}
+                      </span>
+                    </div>
                   </div>
+                  <button
+                    className={styles.removeItem}
+                    onClick={() => removeFromCart(setCart, product, cart)}
+                  >
+                    <img src='public/assets/images/icon-remove-item.svg' />
+                  </button>
                 </div>
                 <button
-                  className={styles.removeItem}
-                  onClick={() => removeFromCart(setCart, product, cart)}
+                  onClick={() =>
+                    handleStockUpdate(product._id, product.quantity)
+                  }
                 >
-                  <img src='public/assets/images/icon-remove-item.svg' />
+                  CHECKOUT
                 </button>
-              </div>
+              </>
             ))}
             <div className={styles.orderTotalContainer}>
               <span className={styles.orderTotalText}>Total:</span>
@@ -74,21 +83,6 @@ const ShoppingCart = ({ cart, setCart, removeFromCart, handleStockUpdate }) => {
                 ${totalPrice.toFixed(2)}
               </span>
             </div>
-            <button
-              onClick={async () => {
-                try {
-                  for (const product of cart) {
-                    await handleStockUpdate(product.id, product.quantity);
-                  }
-                  alert('Stock updated successfully!');
-                  setCart([]); // vacía el carrito si quieres
-                } catch (error) {
-                  alert('Error updating stock');
-                }
-              }}
-            >
-              CHECKOUT
-            </button>
           </div>
         )}
       </div>
