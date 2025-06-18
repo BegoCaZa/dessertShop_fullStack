@@ -2,7 +2,7 @@ import { use } from 'react';
 import { updateStock } from '../../lib/utils/api';
 import styles from './ShoppingCart.module.css';
 
-const ShoppingCart = ({ cart, setCart, removeFromCart, handleStockUpdate }) => {
+const ShoppingCart = ({ cart, setCart, removeFromCart, updateStock }) => {
   //totales para el carrito
   //   let totalProducts = 0;
   //usando reeduce
@@ -68,13 +68,6 @@ const ShoppingCart = ({ cart, setCart, removeFromCart, handleStockUpdate }) => {
                     <img src='public/assets/images/icon-remove-item.svg' />
                   </button>
                 </div>
-                <button
-                  onClick={() =>
-                    handleStockUpdate(product._id, product.quantity)
-                  }
-                >
-                  CHECKOUT
-                </button>
               </>
             ))}
             <div className={styles.orderTotalContainer}>
@@ -85,6 +78,7 @@ const ShoppingCart = ({ cart, setCart, removeFromCart, handleStockUpdate }) => {
             </div>
           </div>
         )}
+        <button onClick={updateStock}>CHECKOUT</button>
       </div>
     </>
   );

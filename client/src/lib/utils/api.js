@@ -15,14 +15,14 @@ export const getAllDesserts = async () => {
   }
 };
 
-export const updateStock = async (id, quantity) => {
+export const updateStock = async cart => {
   try {
-    const response = await fetch(URL_BASE + URL_API + id, {
+    const response = await fetch(URL_BASE + URL_API, {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ quantity })
+      body: JSON.stringify({ cart })
     });
 
     if (response.ok) {

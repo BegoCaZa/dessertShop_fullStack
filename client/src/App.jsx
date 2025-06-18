@@ -44,7 +44,7 @@ const App = () => {
               cart={cart}
               setCart={setCart}
               removeFromCart={removeFromCart}
-              handleStockUpdate={handleStockUpdate}
+              updateStock={() => handleStockUpdate(cart, setProducts)}
             />
           </div>
         </>
@@ -83,9 +83,9 @@ const removeFromCart = (setCart, product, cart) => {
   setCart(updatedCart);
 };
 
-const handleStockUpdate = async (id, quantity, setProducts) => {
+const handleStockUpdate = async (cart, setProducts) => {
   try {
-    const updatedStock = await updateStock(id, quantity);
+    const updatedStock = await updateStock(cart);
     console.log('Stock updated successfully:', updatedStock);
     setProducts(updatedStock); //retorna el nuevo stock actualizado
     //va a regresar el stock actualizado de todos los postres

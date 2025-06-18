@@ -39,20 +39,34 @@ dessertsController.getDessertById = async (req, res) => {
 // };
 
 dessertsController.updateStock = async (req, res) => {
-  const { id } = req.params;
-  const { quantity } = req.body; // el monto a restar stock
+  const { cart } = req.body;
+
+  console.log(cart);
+
+  if (!Array.isArray(cart) || cart.length === 0) {
+    return res.status(400).send({ message: 'Cart is empty' });
+  }
   try {
-    dessertFound = await DessertModel.findById(id);
-    if (!dessertFound) {
-      return res.status(404).send({ message: 'Dessert not found' });
+    const updatedStock = [];
+
+    for (const item of cart) {
+      const dessertFound = await DessertModel.findById(item._id);
+
+      if (!dessertFound) {
+        return res.status(404).send({ message: 'Dessert not found' });
+      }
+      if (dessertFound.stock < item.quantity) {
+        return res.status(400).send({ message: 'Not enough stock' });
+      }
+      dessertFound.stock -= item.quantity; // resta el stock
+      await dessertFound.save(); // guarda los cambios
+      //importante que reciba objetos
+
+      updatedStock.push(dessertFound); //lo meto al nuevo array
     }
-    if (dessertFound.stock < quantity) {
-      return res.status(400).send({ message: 'Not enough stock' });
-    }
-    dessertFound.stock -= quantity; // resta el stock
-    await dessertFound.save(); // guarda los cambios
-    //importante que reciba objetos
+
     const allDesserts = await DessertModel.find();
+
     res.status(200).send(allDesserts);
   } catch (error) {
     res.status(500).send({ message: 'Error updating users' + error });
