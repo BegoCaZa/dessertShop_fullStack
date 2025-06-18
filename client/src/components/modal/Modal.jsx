@@ -1,8 +1,8 @@
 import { createPortal } from 'react-dom';
-import styles from '../modal/modal.module.css';
+import styles from './Modal.module.css';
 
 const Modal = ({ children }) => {
-  if (!children) return;
+  if (!children) return null;
 
   return createPortal(
     <div className={styles.modalContainer}>{children}</div>,

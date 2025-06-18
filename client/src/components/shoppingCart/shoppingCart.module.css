@@ -116,7 +116,7 @@
   font-size: 20px;
 }
 
-.checkoutButton{
+.checkoutButton {
   width: 100%;
   display: flex;
   justify-content: center;
@@ -124,9 +124,22 @@
   color: aliceblue;
   font-weight: 700;
   border: none;
-  padding:15px;
+  padding: 15px;
   border-radius: 20px;
   margin-top: 10px;
+  cursor: pointer;
+}
+
+.checkoutButton:hover {
+  background-color: var(--color-outline);
+}
+
+.modalContent {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  z-index: 10;
+  background-color: rgba(0, 139, 139, 0.479);
 }
 
 .hide {

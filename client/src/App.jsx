@@ -48,6 +48,7 @@ const App = () => {
               removeFromCart={removeFromCart}
               updateStock={() => handleStockUpdate(cart, setProducts)}
               setModalContent={setModalContent}
+              modalContent={modalContent}
             />
           </div>
         </>

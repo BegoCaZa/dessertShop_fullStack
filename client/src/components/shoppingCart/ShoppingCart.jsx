@@ -7,7 +7,8 @@ const ShoppingCart = ({
   setCart,
   removeFromCart,
   updateStock,
-  setModalContent
+  setModalContent,
+  modalContent
 }) => {
   //totales para el carrito
   //   let totalProducts = 0;
@@ -88,7 +89,13 @@ const ShoppingCart = ({
           className={styles.checkoutButton}
           onClick={() => {
             updateStock();
-            setModalContent();
+            setModalContent(
+              <div className={styles.modalContent}>
+                <h2>Thank you for your order!</h2>
+                <p>Your stock has been updated.</p>
+              </div>
+            );
+            console.log(modalContent);
           }}
         >
           CHECKOUT
