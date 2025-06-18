@@ -2,7 +2,13 @@ import { use } from 'react';
 import { updateStock } from '../../lib/utils/api';
 import styles from './ShoppingCart.module.css';
 
-const ShoppingCart = ({ cart, setCart, removeFromCart, updateStock }) => {
+const ShoppingCart = ({
+  cart,
+  setCart,
+  removeFromCart,
+  updateStock,
+  setModalContent
+}) => {
   //totales para el carrito
   //   let totalProducts = 0;
   //usando reeduce
@@ -78,7 +84,13 @@ const ShoppingCart = ({ cart, setCart, removeFromCart, updateStock }) => {
             </div>
           </div>
         )}
-        <button className={styles.checkoutButton} onClick={updateStock}>
+        <button
+          className={styles.checkoutButton}
+          onClick={() => {
+            updateStock();
+            setModalContent();
+          }}
+        >
           CHECKOUT
         </button>
       </div>

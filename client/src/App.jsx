@@ -4,12 +4,14 @@ import Header from './components/header/Header';
 import ProductsContainer from './components/productsContainer/ProductsContainer';
 import ShoppingCart from './components/shoppingCart/ShoppingCart';
 import { getAllDesserts, updateStock } from './lib/utils/api';
+import Modal from './components/modal/Modal';
 
 const App = () => {
   const [cart, setCart] = useState([]);
   const [filter, setFilter] = useState('DEFAULT');
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [modalContent, setModalContent] = useState();
 
   console.log(cart);
 
@@ -45,10 +47,12 @@ const App = () => {
               setCart={setCart}
               removeFromCart={removeFromCart}
               updateStock={() => handleStockUpdate(cart, setProducts)}
+              setModalContent={setModalContent}
             />
           </div>
         </>
       )}
+      <Modal>{modalContent}</Modal>
     </div>
   );
 };
