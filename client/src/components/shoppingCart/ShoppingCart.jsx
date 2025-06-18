@@ -90,12 +90,20 @@ const ShoppingCart = ({
           onClick={() => {
             updateStock();
             setModalContent(
-              <div className={styles.modalContent}>
+              <div className='modalContent'>
                 <h2>Thank you for your order!</h2>
-                <p>Your stock has been updated.</p>
+                <ul>
+                  {cart.map(product => (
+                    <li key={product.id}>
+                      {product.quantity} x {product.title} – $
+                      {product.price.toFixed(2)}
+                    </li>
+                  ))}
+                </ul>
+                <p>Total: ${totalPrice.toFixed(2)}</p>
+                <button onClick={() => setModalContent(null)}>Close</button>
               </div>
             );
-            console.log(modalContent);
           }}
         >
           CHECKOUT

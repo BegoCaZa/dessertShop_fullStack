@@ -95,3 +95,14 @@ body {
     gap: 15px;
   }
 }
+
+.modalContainer {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1;
+  background-color: rgba(0, 139, 139, 0.479);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
