@@ -116,6 +116,19 @@
   font-size: 20px;
 }
 
+.checkoutButton{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  background-color: var(--color-primary);
+  color: aliceblue;
+  font-weight: 700;
+  border: none;
+  padding:15px;
+  border-radius: 20px;
+  margin-top: 10px;
+}
+
 .hide {
   display: none;
 }

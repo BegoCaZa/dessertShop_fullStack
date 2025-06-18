@@ -78,7 +78,9 @@ const ShoppingCart = ({ cart, setCart, removeFromCart, updateStock }) => {
             </div>
           </div>
         )}
-        <button onClick={updateStock}>CHECKOUT</button>
+        <button className={styles.checkoutButton} onClick={updateStock}>
+          CHECKOUT
+        </button>
       </div>
     </>
   );
