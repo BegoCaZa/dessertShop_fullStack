@@ -101,7 +101,11 @@ const ShoppingCart = ({
                   ))}
                 </ul>
                 <p>Total: ${totalPrice.toFixed(2)}</p>
-                <button onClick={() => setModalContent(null)}>Close</button>
+                <button
+                  onClick={() => handleCloseModal(setModalContent, setCart)}
+                >
+                  Close
+                </button>
               </div>
             );
           }}
@@ -111,6 +115,11 @@ const ShoppingCart = ({
       </div>
     </>
   );
+};
+
+const handleCloseModal = (setModalContent, setCart) => {
+  setModalContent(null);
+  setCart([]); //limpia el carrito
 };
 
 // const handleStockUpdate = async (id, quantity) => {
