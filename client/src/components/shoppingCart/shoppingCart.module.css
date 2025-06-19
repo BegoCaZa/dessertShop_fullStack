@@ -142,6 +142,10 @@
   background-color: rgba(0, 139, 139, 0.479);
 }
 
+.orderSummary{
+  list-style: none;
+}
+
 .hide {
   display: none;
 }

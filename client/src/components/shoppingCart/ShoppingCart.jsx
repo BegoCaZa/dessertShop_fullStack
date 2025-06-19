@@ -92,7 +92,7 @@ const ShoppingCart = ({
             setModalContent(
               <div className='modalContent'>
                 <h2>Thank you for your order!</h2>
-                <ul>
+                <ul className={styles.orderSummary}>
                   {cart.map(product => (
                     <li key={product.id}>
                       {product.quantity} x {product.title} – $
